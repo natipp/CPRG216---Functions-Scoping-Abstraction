@@ -2,8 +2,8 @@ def computeCustomWallsArea():
     wall_number = int(input('Please enter the number of walls in the room:'))
     room_area = 0
     for x in range(wall_number):
-        length = int(input('Enter the length of this room:'))
-        width = int(input('Enter the width of this room:'))
+        length = int(input('Enter the length of this wall:'))
+        width = int(input('Enter the width of this wall:'))
         room_area += length * width
         return room_area
 
