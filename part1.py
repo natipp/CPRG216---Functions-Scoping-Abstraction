@@ -10,10 +10,8 @@ def computeCustomWallsArea():
 
 def computeGallons():
     gallons_need = computeRoomArea() / 350 
-    print(f'This room will require {gallons_need} gallons to paint.')
     return gallons_need
 
 def computePaintPrice():
     price = computeGallons() * 42
-    print('This will cost the customer $',price)
     return price
