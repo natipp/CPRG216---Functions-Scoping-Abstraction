@@ -3,7 +3,13 @@
 #
 # Team Members:     Nathalia P., Anna R., Jubril S.
 #
-# Date:             April 8th, 2023
+# Date:             April 9th, 2023
+#
+# Inputs:           The user will choose how many rooms need to be calculated, the shape of the room, the dimensions
+#                   of the room, number of windows/door in the room, and the size of those windows.
+#
+# Outputs:          For each room it will output the total area to be painted, the amount of paint needed, and the cost of the job.
+#                   At the end, it will also calculate a total for all of the rooms.
 
 
 def computeRectangleWallsArea():
