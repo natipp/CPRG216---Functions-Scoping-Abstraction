@@ -27,7 +27,7 @@ def computeSquareWallsArea():
     area_to_paint = 4 * computeSquareArea(side_length)
 
     # Calculate the area of the windows and doors
-    windows_doors_area = computeWindowsDoorArea()
+    windows_doors_area = computeWindowsDoorsArea()
 
     # Subtract the area of the windows and doors from the total area
     area_to_paint -= windows_doors_area
@@ -42,16 +42,36 @@ def computeSquareArea(side_length):
 
 
 def computeCustomWallsArea():
-    wall_number = int(input('Please enter the number of walls in the room:'))
-    room_area = 0
-    for x in range(wall_number):
-        length = int(input('Enter the length of this room:'))
-        width = int(input('Enter the width of this room:'))
-        room_area += length * width
-        return room_area
+    '''Asks the user to enter the number of walls in the room, then ask for the height and length of each wall in order to calculate the room area, and then return the room area'''
+
+    # Get the number of walls from the user
+    number_of_walls = int(input("How many walls are there in the room \n"))
+
+    # Initialize the area to 0
+    area_to_paint = 0
+
+    # Loop through the number of walls
+    for i in range(number_of_walls):
+
+        # Get the height and length of the wall from the user
+        wall_height = float(
+            input(f"Enter the height of wall {i+1} in feet:\n"))
+        wall_length = float(
+            input(f"Enter the length of wall {i+1} in feet:\n"))
+
+        # Calculate the area of the wall and add it to the total area
+        area_to_paint += wall_height * wall_length
+
+    # Calculate the area of the windows and doors
+    windows_doors_area = computeWindowsDoorsArea()
+
+    # Subtract the area of the windows and doors from the total area
+    area_to_paint -= windows_doors_area
+
+    return area_to_paint
 
 
-def computeWindowsDoorArea():
+def computeWindowsDoorsArea():
     '''Asks the user for the number of windows and doors in a room, then asks for the length and width of each door or window, and calculates the sum of areas of all doors and windows in the room'''
 
     # Get the number of windows and doors from the user
@@ -99,7 +119,7 @@ def computeRoomArea(room_number):
         else:
             print("Please enter an option from 1 to 3.")
             return
-        windows_door_area = computeWindowsDoorArea()
+        windows_door_area = computeWindowsDoorsArea()
         painted_area = room_area - windows_door_area
         print(f"For Room: {num_room}, the area to be painted is {painted_area:.1f} square ft and will require {(computeGallons(room_area)):.2f} to paint. This will cost the customer ${(computePaintPrice(room_area)):.2f}")
         num_room += 1
