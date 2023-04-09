@@ -1,3 +1,7 @@
+square_feet_per_gallon = 350
+paint_price_per_gallon = 42
+
+
 def computeRectangleWallsArea():
     length = int(input("Enter the length of the room in feet:\n"))
     width = int(input("Enter the width of the room in feet:\n"))
@@ -73,13 +77,11 @@ def computeWindowsDoorArea():
 
 
 def computeGallons(room_area):
-    gallons_need = computeRoomArea(room_area) / 350
-    return gallons_need
+    return room_area / square_feet_per_gallon
 
 
 def computePaintPrice(room_area):
-    price = computeGallons(room_area) * 42
-    return price
+    return computeGallons(room_area) * paint_price_per_gallon
 
 
 def computeRoomArea(room_number):
