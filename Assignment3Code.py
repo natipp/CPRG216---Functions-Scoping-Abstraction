@@ -33,7 +33,13 @@ def computeSquareArea(side_length):
     return area
 
 def computeCustomWallsArea():
-    pass
+    wall_number = int(input('Please enter the number of walls in the room:'))
+    room_area = 0
+    for x in range(wall_number):
+        length = int(input('Enter the length of this room:'))
+        width = int(input('Enter the width of this room:'))
+        room_area += length * width
+        return room_area
 
 def computeWindowsDoorArea():
     '''Asks the user for the number of windows and doors in a room, then asks for the length and width of each door or window, and calculates the sum of areas of all doors and windows in the room'''
@@ -60,10 +66,12 @@ def computeWindowsDoorArea():
     return area
 
 def computeGallons(room_area):
-    pass
+    gallons_need = computeRoomArea() / 350 
+    return gallons_need
 
 def computePaintPrice(room_area):
-    pass
+    price = computeGallons() * 42
+    return price
 
 def computeRoomArea(room_number):
     num_room = 1
