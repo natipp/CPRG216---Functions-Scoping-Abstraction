@@ -149,7 +149,7 @@ def computeRoomArea(room_number):
         paint_price = computePaintPrice(painted_area)
 
         # Print the results
-        print(f"For Room: {num_room}, the area to be painted is {painted_area:.1f} square ft and will require {paint_gallon:.2f} to paint. This will cost the customer ${paint_price:.2f}")
+        print(f"For Room: {num_room}, the area to be painted is {painted_area:.1f} square ft and will require {paint_gallon:.2f} gallons to paint. This will cost the customer ${paint_price:.2f}")
 
         total_painted_area += painted_area
         total_paint_used += paint_gallon
