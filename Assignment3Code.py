@@ -1,3 +1,11 @@
+# Description:      This program calculates the amount of paint and money needed in order to paint a given room.
+#                   The room can be rectangular, square, or custom.
+#
+# Team Members:     Nathalia P., Anna R., Jubril S.
+#
+# Date:             April 8th, 2023
+
+
 def computeRectangleWallsArea():
     '''Asks the user to enter the length, width and height of the rectangular room, 
     calculates and returns the walls surface area to be painted'''
