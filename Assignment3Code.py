@@ -1,15 +1,26 @@
 def computeRectangleWallsArea():
-    length = int(input("Enter the length of the room in feet:\n"))
-    width = int(input("Enter the width of the room in feet:\n"))
-    height = int(input("Enter the height of the room in feet:\n"))
-    room_surface_area = (2 * calculateRectangleArea(length, width)) + (
-        2 * calculateRectangleArea(length, height)) + (2 * calculateRectangleArea(height, width))
+    '''Asks the user to enter the length, width and height of the rectangular room, 
+    calculates and returns the walls surface area to be painted'''
+
+    # Get the length, width and height of the room from the user
+    length = float(input("Enter the length of the room in feet:\n"))
+    width = float(input("Enter the width of the room in feet:\n"))
+    height = float(input("Enter the height of the room in feet:\n"))
+
+    # Calculate the area of the 4 walls
+    room_surface_area = 2 * (calculateRectangleArea(length, height) + calculateRectangleArea(width, height))
+    
+    # Calculate the area of the windows and doors
     windows_doors_area = computeWindowsDoorArea()
+
+    # Subtract the area of the windows and doors from the total area
     painted_area = room_surface_area - windows_doors_area
+
     return painted_area
 
 
 def calculateRectangleArea(length, width):
+    #Takes the length and width of a rectangle and returns the value of its area
     rec_area = length * width
     return rec_area
 
@@ -34,7 +45,7 @@ def computeSquareWallsArea():
 
 
 def computeSquareArea(side_length):
-    '''Takes one side length of a square and returns the value of its area'''
+    #Takes one side length of a square and returns the value of its area
     area = side_length ** 2
     return area
 
@@ -95,21 +106,32 @@ def computeWindowsDoorArea():
 
 
 def computeGallons(room_area):
+    #Takes the area as a parameter and returns the number of gallons of paint needed
     square_feet_per_gallon = 350
     return room_area / square_feet_per_gallon
 
 
 def computePaintPrice(room_area):
+    #Takes the area as a parameter and returns the price of the gallons of paint needed
     paint_price_per_gallon = 42
     return computeGallons(room_area) * paint_price_per_gallon
 
 
 def computeRoomArea(room_number):
     num_room = 1
+    total_painted_area = 0
+    total_paint_used = 0
+    total_price = 0
+
+    #Keep looping until the total number of rooms are reached
     while (num_room <= room_number):
         print(f"Room: {num_room}")
+        
+        # Prompt the user to select the shape of the room
         room_shape = int(input(
             "Select the shape of the room:\n1 - Rectangular\n2 - Square\n3 - Custom(more or less than 4 walls, all square or rectangles)\n"))
+        
+        # Handle the user's selection
         if (room_shape == 1):
             painted_area = computeRectangleWallsArea()
         elif (room_shape == 2):
@@ -120,8 +142,19 @@ def computeRoomArea(room_number):
             print("Please enter an option from 1 to 3.")
             return
         
-        print(f"For Room: {num_room}, the area to be painted is {painted_area:.1f} square ft and will require {(computeGallons(painted_area)):.2f} to paint. This will cost the customer ${(computePaintPrice(painted_area)):.2f}")
+        # Calculate the number of gallons and price
+        paint_gallon = computeGallons(painted_area)
+        paint_price = computePaintPrice(painted_area)
+
+        # Print the results
+        print(f"For Room: {num_room}, the area to be painted is {painted_area:.1f} square ft and will require {paint_gallon:.2f} to paint. This will cost the customer ${paint_price:.2f}")
+
+        total_painted_area += painted_area
+        total_paint_used += paint_gallon
+        total_price += paint_price
         num_room += 1
+    #print the total results
+    print(f"Area to be painted is {total_painted_area:.2f} square ft and will require {total_paint_used:.2f} gallons to paint. This will cost the customer ${total_price:.2f}")
 
 
 print("Welcome to Shiny Paint Company for indoor painting!")
